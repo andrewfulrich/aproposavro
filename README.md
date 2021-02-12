@@ -1,6 +1,6 @@
 # aproposavro
 
-(WARNING: This is an extremely simple and unpolished tool- I haven't optimized this for user-friendliness)
+(WARNING: This is an extremely simple and unpolished tool- I haven't optimized this yet for user-friendliness)
 
 Minimal web page to test avro schemas by parsing them. Once successfully parsed, you can then generate fake data based off them. You can also put in your own data to test against the parsed schema.
 
