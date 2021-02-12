@@ -15,9 +15,8 @@ Runs fully in your browser- there is no back-end.
 1. Open index.html
 2. paste your schema into the text area
 3. Click the parse button. If successful, you'll see the parsed schema printed below the text area. If not, you'll see errors in the browser console.
-4. Click Generate Test Data (Warning: may not work for recursive schema definitions) Test data will appear in the second text area
-5. Paste your own test data into the second test data or use/modify the generated test data
-6. Click the Test Data button at the bottom of the screen and check the browser console for success or error
+4. (Optional) Click Generate Test Data (Warning: may not work for recursive schema definitions) Test data will appear in the second text area
+5. (Optional) Paste your own test data into the second text area or use/modify the generated test data. Then click the Test Data button at the bottom of the screen and check the browser console for success or error
 
 ## To compile the dependencies yourself
 Run the following commands:
