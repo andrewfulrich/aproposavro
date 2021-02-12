@@ -18,6 +18,9 @@ Runs fully in your browser- there is no back-end.
 4. (Optional) Click Generate Test Data (Warning: may not work for recursive schema definitions) Test data will appear in the second text area
 5. (Optional) Paste your own test data into the second text area or use/modify the generated test data. Then click the Test Data button at the bottom of the screen and check the browser console for success or error
 
+## demo
+https://storage.googleapis.com/aproposavro/v2/index.html
+
 ## To compile the dependencies yourself
 Run the following commands:
 ```
