@@ -1,0 +1,1 @@
+const converter=require('avro2jsonschema');

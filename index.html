@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <script src="avsc.js"></script>
+        <script src="avro2jsonschema.js"></script>
+        <script src="jsf.js"></script>
+        <style>
+            textarea {
+                width:100%;
+                min-height:200px;
+            }
+        </style>
+    </head>
+    <body>
+        <textarea id="inputSchema"></textarea>
+        
+        
+        <button onclick="parseSchema(event)">Parse Schema</button>
+        <div id="exampleTester">
+            Currently parsed schema: <pre id="currentSchema"></pre>
+            <button onclick="makeJson()">Generate Json from Schema</button>
+            <textarea id="inputJSON"></textarea>
+            <button onclick="testJson(event)">Test Json</button>
+        </div>
+        <script>
+            var schema;
+function parseSchema(e) {
+    const input=document.getElementById('inputSchema').value
+    try {
+        const jsonObject=JSON.parse(input);
+        console.log('parsing json: ', jsonObject)
+        schema=avsc.Type.forSchema(jsonObject)
+        document.getElementById('currentSchema').innerText=JSON.stringify(jsonObject,null,2);
+    } catch(e) {
+        console.error(e)
+    }
+}
+function testJson(e) {
+    const input=document.getElementById('inputJSON').value
+    try {
+        const jsonObject=JSON.parse(input);
+        console.log('parsing json: ',jsonObject)
+        const buf = schema.toBuffer(jsonObject); // Encoded buffer.
+        const val = schema.fromBuffer(buf); // Decoded buffer
+        console.log('success')
+    } catch(e) {
+        console.error(e)
+    }
+}
+function makeJson(e) {
+    const c=new converter.Avro2JSONSchemaConverter()
+    const s=c.convert(schema);
+    jsf.resolve(s).then(sample=>{
+        document.getElementById('inputJSON').innerText=JSON.stringify(sample,null,2)
+    })
+}
+//             const type = avsc.Type.forSchema({
+//   type: 'record',
+//   fields: [
+//     {name: 'kind', type: {type: 'enum', symbols: ['CAT', 'DOG']}},
+//     {name: 'name', type: 'string'}
+//   ]
+// });
+var test={
+  "type": "record",
+  "fields": [
+    {"name": "kind", "type": {"type": "enum", "name":"thing", "symbols": ["CAT", "DOG"]}},
+    {"name": "name", "type": "string"},
+    {"name":"stuff","type":"thing"}
+  ]
+}
+ 
+// const buf = type.toBuffer({kind: 'CAT', name: 'Albert'}); // Encoded buffer.
+// const val = type.fromBuffer(buf); // = {kind: 'CAT', name: 'Albert'}
+// console.log(val)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "aproposavro",
+  "version": "1.0.0",
+  "description": "Validate Avro schemas and generate test data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Ulrich",
+  "license": "ISC",
+  "dependencies": {
+    "avro2jsonschema": "^0.1.1",
+    "avsc": "^5.5.3",
+    "browserify": "^17.0.0",
+    "json-schema-faker": "^0.5.0-rcv.32"
+  }
+}
